@@ -1,38 +1,156 @@
-.App {
-  text-align: center;
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  font-family: "Rubik", sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.fixed-top {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1030; /* 确保导航栏位于页面内容之上 */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+/* Typewriter styles */
+@keyframes blink {
+  50% {
+    border-color: transparent;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.typewriter {
+  font-family: "Outfit";
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: 0.15em; /* Adjust as needed */
+  display: inline-block;
+  animation: typing 3.5s steps(40, end), blink 0.75s step-end infinite;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
+/* The typing effect */
+@keyframes typing {
   from {
-    transform: rotate(0deg);
+    width: 0;
   }
   to {
-    transform: rotate(360deg);
+    width: 100%;
   }
+}
+
+.banner {
+  background-color: #faf8d4; /* 这个颜色已经在行内样式中设置，可以省略 */
+  min-height: 550px; /* 或其他根据设计需求设置的高度 */
+  display: flex;
+  align-items: center; /* 垂直居中 */
+  justify-content: center; /* 水平居中 */
+}
+.banner-left {
+  width: 50%;
+  margin-left: 100px;
+}
+
+.projects-container {
+  max-width: 1150px; /* 限制最大宽度 */
+  margin: 0 auto; /* 水平居中 */
+  padding: 0 15px; /* 防止内容紧贴边缘 */
+}
+
+.custom-card {
+  max-width: 30rem;
+  height: 35rem;
+  border: transparent;
+  border-radius: 0%;
+  margin-bottom: 10px;
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* 平滑的转换效果 */
+  cursor: default; /* 默认不改变鼠标样式 */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 添加阴影，给卡片更多的立体感 */
+}
+
+/* 鼠标悬停在卡片上时的样式 */
+.card:hover {
+  transform: translateY(-5px); /* 向上移动卡片 */
+  cursor: pointer; /* 鼠标变为指针 */
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2); /* 增加阴影，强化浮起的效果 */
+}
+.card-body {
+  margin-top: 0px;
+  text-align: left;
+  padding: 1.5rem; /* 增加内边距 */
+  font-size: 1 rem; /* 文字大小调小 */
+  font-weight: 300; /* 文字更细 */
+}
+
+/* 标签背景颜色调整 */
+.badge {
+  font-size: 1rem;
+  font-weight: 500;
+  background-color: #faf8d4; /* 标签背景颜色 */
+  color: #91818a; /* 可以调整文字颜色以确保足够的对比度 */
+  margin-right: 0.5rem; /* 右边距 */
+  margin-bottom: 0.5rem; /* 底部边距，使标签不会太拥挤 */
+}
+
+.link-style {
+  margin-bottom: 1rem;
+}
+.flip-card {
+  background-color: transparent;
+  width: 100%;
+  height: 18rem;
+  perspective: 1000px;
+  cursor: pointer; /* 鼠标变成手指图标，提示可点击 */
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 5px;
+
+  top: 0;
+  left: 0;
+}
+
+.flip-card-front {
+  z-index: 2;
+  transform: rotateY(0deg);
+}
+
+.flip-card-back {
+  z-index: 1;
+  transform: rotateY(180deg);
+}
+
+.section-title {
+  margin-top: 15px;
+  margin-bottom: 0px;
+  color: #333;
+  font-weight: bold;
+}
+
+.section-text {
+  margin-bottom: 5px;
 }
