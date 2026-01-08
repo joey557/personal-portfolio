@@ -1,3 +1,19 @@
+/* Hand-drawn theme variables */
+:root {
+  --paper: #fffbf0;
+  --ink: #4a3b32;
+  --doodle-orange: #ff9f68;
+  --doodle-orange-dark: #d67d4a;
+  --doodle-yellow: #ffd966;
+  --doodle-yellow-dark: #d4ac3d;
+  --doodle-pink: #ff8585;
+  --doodle-pink-dark: #cc5656;
+  --doodle-green: #95c673;
+  --doodle-green-dark: #6a944d;
+  --doodle-blue: #7ac7cc;
+  --surface-light: #ffffff;
+}
+
 body,
 h1,
 h2,
@@ -6,14 +22,60 @@ h4,
 h5,
 h6,
 p {
-  font-family: "Rubik", sans-serif;
+  font-family: "Patrick Hand", "Nunito", cursive, sans-serif;
+  color: var(--ink);
+}
+
+body {
+  background: var(--paper);
+  font-size: 22px;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  margin: 0; /* remove default browser margins to avoid gaps */
 }
 
 .fixed-top {
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 1030; /* 确保导航栏位于页面内容之上 */
+  z-index: 1030; /* ensure navbar stays above content */
+  background: #fff4bf; /* match banner background */
+  border-bottom: none; /* remove divider line */
+  box-shadow: none; /* ensure no shadow line */
+}
+
+/* force override bootstrap bg-body-tertiary on navbar */
+.navbar.bg-body-tertiary.fixed-top,
+.fixed-top.bg-body-tertiary {
+  background: #fff4bf !important;
+  background-color: #fff4bf !important;
+  border-bottom: 0 !important;
+  box-shadow: none !important;
+}
+
+/* lively contrast for navbar links and brand (solid colors, no gradients) */
+.fixed-top .navbar-brand,
+.fixed-top .nav-link {
+  color: var(--ink) !important;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+  text-shadow: 0.5px 0.5px 0 rgba(0, 0, 0, 0.15);
+}
+.fixed-top .nav-link:hover,
+.fixed-top .navbar-brand:hover {
+  color: var(--doodle-green-dark) !important;
+  text-decoration: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: var(--doodle-yellow);
+  text-underline-offset: 4px;
+}
+.fixed-top .navbar-toggler {
+  border-color: var(--ink);
+}
+.fixed-top .navbar-toggler-icon {
+  filter: none;
 }
 
 /* Typewriter styles */
@@ -25,13 +87,13 @@ p {
 
 .typewriter {
   font-family: "Outfit";
-  overflow: hidden; /* Ensures the content is not revealed until the animation */
-
-  white-space: nowrap; /* Keeps the content on a single line */
-  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
-  letter-spacing: 0.15em; /* Adjust as needed */
+  overflow: hidden; /* hide content until animation reveals */
+  white-space: nowrap; /* keep a single line */
+  margin: 0 auto; /* typing scroll feel */
+  letter-spacing: 0.15em; /* adjust as needed */
   display: inline-block;
   animation: typing 3.5s steps(40, end), blink 0.75s step-end infinite;
+  color: var(--ink);
 }
 
 /* The typing effect */
@@ -45,11 +107,38 @@ p {
 }
 
 .banner {
-  background-color: #faf8d4; /* 这个颜色已经在行内样式中设置，可以省略 */
-  min-height: 550px; /* 或其他根据设计需求设置的高度 */
+  background-color: #fff4bf; /* lighter, softer yellow */
+  min-height: 550px; /* adjust as needed */
   display: flex;
-  align-items: center; /* 垂直居中 */
-  justify-content: center; /* 水平居中 */
+  align-items: center; /* vertical center */
+  justify-content: center; /* horizontal center */
+  padding-top: 70px; /* use padding so background fills under navbar */
+  padding-bottom: 48px; /* space for wavy divider */
+}
+.banner {
+  position: relative;
+  overflow: hidden;
+}
+/* remove circles for a cleaner look */
+.banner::before {
+  content: none;
+}
+.banner > * {
+  position: relative;
+  z-index: 1;
+}
+.banner::after {
+  /* hand-drawn wavy divider between sections */
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -10px; /* slightly overlap next section */
+  height: 46px;
+  background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 20' preserveAspectRatio='none'><path d='M0 10 Q 12.5 0 25 10 T 50 10 T 75 10 T 100 10' stroke='%23FF9F68' stroke-width='4' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>")
+    center / 100% 100% no-repeat;
+  pointer-events: none;
+  z-index: 1;
 }
 .banner-left {
   width: 50%;
@@ -57,45 +146,54 @@ p {
 }
 
 .projects-container {
-  max-width: 1150px; /* 限制最大宽度 */
-  margin: 0 auto; /* 水平居中 */
-  padding: 0 15px; /* 防止内容紧贴边缘 */
+  max-width: 1150px; /* layout width */
+  margin: 0 auto; /* center */
+  padding: 0 15px; /* keep content away from edges */
+  background-color: var(--paper); /* ensure visual separation from banner */
+  position: relative; /* anchor for doodles overlay */
 }
 
 .custom-card {
   max-width: 30rem;
-  height: 35rem;
-  border: transparent;
-  border-radius: 0%;
+  height: 37rem;
+  border: 3px solid var(--doodle-green);
+  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
   margin-bottom: 10px;
-
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* 平滑的转换效果 */
-  cursor: default; /* 默认不改变鼠标样式 */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 添加阴影，给卡片更多的立体感 */
+  background: var(--surface-light);
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* smooth transition */
+  cursor: default; /* keep default cursor */
+  box-shadow: 6px 6px 0 0 rgba(0, 0, 0, 0.15); /* hand-drawn offset shadow */
+  position: relative; /* anchor for ribbon */
+  overflow: visible;
 }
 
-/* 鼠标悬停在卡片上时的样式 */
+/* card hover state */
 .card:hover {
-  transform: translateY(-5px); /* 向上移动卡片 */
-  cursor: pointer; /* 鼠标变为指针 */
-  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2); /* 增加阴影，强化浮起的效果 */
+  transform: translateY(-5px); /* lift up a bit */
+  cursor: pointer; /* indicate interactivity */
+  box-shadow: 8px 8px 0 0 rgba(0, 0, 0, 0.2); /* stronger offset shadow */
 }
 .card-body {
   margin-top: 0px;
   text-align: left;
-  padding: 1.5rem; /* 增加内边距 */
-  font-size: 1 rem; /* 文字大小调小 */
-  font-weight: 300; /* 文字更细 */
+  padding: 1.5rem; /* inner spacing */
+  font-size: 1.22rem; /* card text size (non-heading) */
+  font-weight: 300; /* lighter weight */
+  color: var(--ink);
+  line-height: 1.55;
 }
 
-/* 标签背景颜色调整 */
+/* tag badge */
 .badge {
   font-size: 1rem;
   font-weight: 500;
-  background-color: #faf8d4; /* 标签背景颜色 */
-  color: #91818a; /* 可以调整文字颜色以确保足够的对比度 */
-  margin-right: 0.5rem; /* 右边距 */
-  margin-bottom: 0.5rem; /* 底部边距，使标签不会太拥挤 */
+  background-color: rgba(149, 198, 115, 0.2); /* badge bg */
+  color: var(--doodle-green-dark); /* good contrast */
+  border: 2px solid var(--doodle-green);
+  border-radius: 999px;
+  margin-right: 0.5rem; /* spacing */
+  margin-bottom: 0.5rem; /* spacing */
+  box-shadow: 2px 2px 0 0 rgba(0, 0, 0, 0.1);
 }
 
 .link-style {
@@ -106,7 +204,34 @@ p {
   width: 100%;
   height: 18rem;
   perspective: 1000px;
-  cursor: pointer; /* 鼠标变成手指图标，提示可点击 */
+  cursor: pointer; /* click to flip */
+}
+
+/* hackathon ribbon */
+.ribbon.badge-hackathon {
+  position: absolute;
+  top: 10px;
+  right: -8px;
+  background: var(--doodle-orange);
+  color: #fff;
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  font-weight: 800;
+  border: 3px solid var(--ink);
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  transform: rotate(8deg);
+  z-index: 5;
+}
+.ribbon.badge-hackathon::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  right: 14px;
+  border-width: 8px 8px 0 8px;
+  border-style: solid;
+  border-color: var(--doodle-orange) transparent transparent transparent;
+  filter: drop-shadow(2px 2px 0 rgba(0, 0, 0, 0.08));
 }
 
 .flip-card-inner {
@@ -128,7 +253,10 @@ p {
   width: 100%;
   height: 100%;
   backface-visibility: hidden;
-  border-radius: 5px;
+  border-radius: 25px 15px 25px 15px / 15px 25px 15px 25px;
+  border: none;
+  background: transparent;
+  box-shadow: none;
 
   top: 0;
   left: 0;
@@ -147,10 +275,114 @@ p {
 .section-title {
   margin-top: 15px;
   margin-bottom: 0px;
-  color: #333;
+  color: var(--ink);
   font-weight: bold;
+  text-shadow: 0.5px 0.5px 0 rgba(0, 0, 0, 0.1);
+  display: inline-block; /* shrink to text width */
+  width: -moz-fit-content;
+  width: fit-content; /* modern browsers */
+  position: relative;
+  padding: 0 4px 2px 4px; /* room for highlight stroke */
+  background: none; /* remove previous full-width highlight */
+}
+.section-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0; /* match text width */
+  height: 0.55em;
+  bottom: 0.05em;
+  background: var(--doodle-yellow);
+  border-radius: 6px;
+  transform: rotate(-1.5deg); /* hand-drawn vibe */
+  z-index: -1;
 }
 
 .section-text {
   margin-bottom: 5px;
+  color: rgba(74, 59, 50, 0.8);
+  font-size: 1.1rem; /* backside paragraph size */
+}
+
+/* section heading: My Projects */
+.projects-container > h3 {
+  font-size: clamp(1.9rem, 1.9vw + 1.1rem, 2.4rem);
+  line-height: 1.2;
+  letter-spacing: 0.5px;
+  text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.18);
+  text-decoration-line: underline;
+  text-decoration-style: wavy;
+  text-decoration-color: var(--doodle-orange);
+  text-underline-offset: 10px;
+  display: inline-block;
+  margin: 60px auto !important;
+  text-align: center;
+}
+
+/* card title prominence */
+.custom-card .card-title,
+.custom-card h5.card-title {
+  font-size: 1.6rem;
+  line-height: 1.3;
+  font-weight: 800;
+  color: var(--ink);
+  text-shadow: 0.5px 0.5px 0 rgba(0, 0, 0, 0.15);
+  margin-bottom: 0.5rem;
+}
+
+/* different border colors per card */
+.projects-container .row > div:nth-child(1) .custom-card {
+  border-color: var(--doodle-green);
+}
+.projects-container .row > div:nth-child(2) .custom-card {
+  border-color: var(--doodle-orange);
+}
+.projects-container .row > div:nth-child(3) .custom-card {
+  border-color: var(--doodle-yellow);
+}
+.projects-container .row > div:nth-child(4) .custom-card {
+  border-color: var(--doodle-blue);
+}
+.projects-container .row > div:nth-child(5) .custom-card {
+  border-color: var(--doodle-pink);
+}
+.projects-container .row > div:nth-child(6) .custom-card {
+  border-color: var(--doodle-orange-dark);
+}
+
+/* base readability */
+p,
+li,
+a,
+button,
+input,
+label {
+  font-size: 1.2rem; /* non-heading text larger */
+}
+
+/* heading scale with hand-drawn vibe */
+h1 {
+  font-size: clamp(2.6rem, 2.6vw + 1.6rem, 3.6rem);
+  line-height: 1.2;
+}
+h2 {
+  font-size: clamp(2rem, 2vw + 1.2rem, 2.8rem);
+  line-height: 1.3;
+}
+h3 {
+  font-size: clamp(1.6rem, 1.6vw + 0.9rem, 2.1rem);
+  line-height: 1.35;
+}
+
+/* mobile adjustments */
+@media (max-width: 480px) {
+  body {
+    font-size: 19px;
+  }
+  .card-body {
+    font-size: 1.1rem;
+  }
+  .banner {
+    padding-top: 72px; /* slightly smaller gap on small screens; keep background continuous */
+  }
 }

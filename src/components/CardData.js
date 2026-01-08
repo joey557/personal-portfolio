@@ -4,8 +4,55 @@ import Todos from "../assets/img/Todos.png";
 import international from "../assets/img/international.png";
 import share from "../assets/img/share.png";
 import amazon from "../assets/img/amazon.png";
+import nasa from "../assets/img/nasa.png";
 
 export const cardList = [
+  {
+    imgURL: nasa,
+    title: "NASA Space Apps 2025",
+    text: "End-to-end platform for real-time air quality and smoke/fire risk with TEMPO, AirNow, and FIRMS.",
+    tags: [
+      "Next.js",
+      "TypeScript",
+      "React",
+      "MapLibre",
+
+      "FastAPI",
+      "Python",
+
+      "Docker",
+      "GCP",
+      "Cloud Run",
+    ],
+    ribbon: "Hackathon",
+    link: `
+      🚀<a href="https://github.com/joey557/NASA-Space-Apps-Challenge-2025" target="_blank" style="color: #FABC3F; font-size: 1rem; display: inline-block; margin-right: 15px; font-weight: bold;">
+        GitHub
+      </a>
+      🌐<a href="https://nasa-frontend-496817419557.us-central1.run.app/" target="_blank" style="color: #FABC3F; font-size: 1rem; display: inline-block; font-weight: bold;">
+        Live Site
+      </a>
+    `,
+    title2: "Highlights:",
+    description: `
+      <p class="section-title">•End-to-end build</p>
+      <p class="section-text">
+        Data pipeline, API, and interactive maps integrated into a cohesive system.
+      </p>
+      <p class="section-title">•Data fusion</p>
+      <p class="section-text">
+        Combines TEMPO L3 NRT with AirNow and FIRMS to deliver actionable city-to-regional insights.
+      </p>
+      <p class="section-title">•Interactive mapping</p>
+      <p class="section-text">
+        Heatmaps, clusters, and layered controls with MapLibre for fast exploration.
+      </p>
+      <p class="section-title">•Cloud deployment</p>
+      <p class="section-text">
+        Containerized app deployed on Cloud Run for easy demo and sharing.
+      </p>
+    `,
+  },
   {
     imgURL: aidsbridgeImg,
     title: "AidsBridge",
@@ -99,12 +146,14 @@ export const cardList = [
     title: "To-Do List Management Application",
     text: "A dynamic web application for managing tasks and to-do lists,built with Spring Boot as the core framework.",
     tags: ["Spring MVC", "Bootstrap", "Spring Boot", "Docker", "MySQL", "JSTL"],
-    //     link: `
-    //       🚀<a href="https://github.com/joey557/aidsbridge.git" target="_blank" style="color: #FABC3F; font-size: 1rem; display: inline-block; margin-right: 15px; font-weight: bold;">
-    //        GitHub
-    //     </a>
-
-    //   `,
+    // link template example:
+    // 🚀<a href="https://github.com/..." target="_blank" style="color: #FABC3F; font-size: 1rem; display: inline-block; margin-right: 15px; font-weight: bold;">
+    //   GitHub
+    // </a>
+    //
+    // 🌐<a href="https://example.com" target="_blank" style="color: #FABC3F; font-size: 1rem; display: inline-block; font-weight: bold;">
+    //   Website
+    // </a>
     title2: "Key Features:",
     description: `
   <p class="section-title">•Responsive User Interfaces</p>

@@ -3,13 +3,15 @@ import Card from "react-bootstrap/Card";
 import { cardList } from "./CardData";
 import { Row, Col } from "react-bootstrap";
 import "../App.css";
+import Doodles from "./Doodles";
 
 export default function Projects() {
   return (
     <div className="projects-container">
       <h3 style={{ textAlign: "center", margin: "100px" }}>My Projects</h3>
+      <Doodles />
 
-      <Row>
+      <Row style={{ position: "relative", zIndex: 1 }}>
         {cardList.map((card) => (
           <Col
             sm={10}
@@ -52,6 +54,9 @@ function CardItem({ imageUrl, title, text, tags, link, title2, description }) {
       <div className="flip-card-inner">
         <div className="flip-card-front">
           <Card className="custom-card">
+            {title === "NASA Space Apps 2025" && (
+              <div className="ribbon badge-hackathon">Hackathon</div>
+            )}
             <Card.Img
               variant="top"
               src={imageUrl}
@@ -63,7 +68,7 @@ function CardItem({ imageUrl, title, text, tags, link, title2, description }) {
                 <Card.Text>{text}</Card.Text>
                 <div
                   className="link-style"
-                  onClick={handleLinkClick} // 确保点击链接时不会翻转卡片
+                  onClick={handleLinkClick} // prevent flip when clicking links
                   dangerouslySetInnerHTML={{ __html: link }}
                 />
                 {tags.map((tag) => (
