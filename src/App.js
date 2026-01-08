@@ -8,8 +8,10 @@ function App() {
   return (
     <div>
       <BasicExample />
-      <Banner></Banner>
-      <Projects />
+      <div className="page-scale">
+        <Banner></Banner>
+        <Projects />
+      </div>
     </div>
   );
 }

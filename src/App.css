@@ -41,6 +41,20 @@ body {
   margin: 0; /* remove default browser margins to avoid gaps */
 }
 
+/* Global proportional scale: prefer zoom when supported (Chrome, Safari, Edge) */
+@supports (zoom: 1) {
+  html {
+    zoom: 0.92;
+  } /* ~8% smaller overall */
+}
+/* Fallback for Firefox (no zoom): scale content wrapper, keep navbar fixed */
+@supports not (zoom: 1) {
+  .page-scale {
+    transform: scale(0.92);
+    transform-origin: top center;
+  }
+}
+
 .fixed-top {
   position: fixed;
   top: 0;
