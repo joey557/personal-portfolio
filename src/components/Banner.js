@@ -7,7 +7,7 @@ export const Banner = () => {
     <section className="banner" id="home">
       <div className="banner-left">
         <Typewriter text="Hi, I am Zuyi Huang." />
-        <p style={{ width: "70%", lineHeight: "1.8", fontSize: "1.7rem" }}>
+        <p style={{ width: "70%", lineHeight: "1.65", fontSize: "1.5rem" }}>
           Welcome to my personal website! <br />I am deeply interested in coding
           and technology, and this site is a reflection of my ongoing journey
           into this exciting field. Each small project here helps me sharpen my
