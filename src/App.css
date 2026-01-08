@@ -26,9 +26,14 @@ p {
   color: var(--ink);
 }
 
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
 body {
   background: var(--paper);
-  font-size: 22px;
+  font-size: clamp(19px, 1.1vw + 12px, 21px);
   line-height: 1.75;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -177,7 +182,7 @@ body {
   margin-top: 0px;
   text-align: left;
   padding: 1.5rem; /* inner spacing */
-  font-size: 1.22rem; /* card text size (non-heading) */
+  font-size: 1.18rem; /* slightly smaller for deployed feel */
   font-weight: 300; /* lighter weight */
   color: var(--ink);
   line-height: 1.55;
@@ -357,7 +362,7 @@ a,
 button,
 input,
 label {
-  font-size: 1.2rem; /* non-heading text larger */
+  font-size: 1.15rem; /* back off a bit to avoid oversized feel */
 }
 
 /* heading scale with hand-drawn vibe */
